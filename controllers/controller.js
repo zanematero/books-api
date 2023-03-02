@@ -1,9 +1,16 @@
 const router = require('express').Router()
+const db = require('../models')
 
 router.get('/', (req, res) => {
-    res.render('home')
-})
-
+	db.Book.find()
+	.then((books) => {
+		res.render('home/index', { books })
+	})
+	  .catch(err => {
+		console.log(err)
+		res.render('error')
+	  })
+  })
 router.get('*', (req, res) => {
     res.render('error')
 })
