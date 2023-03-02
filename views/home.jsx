@@ -7,3 +7,5 @@ function home () {
         </main>
     )
 }
+
+module.exports = home
